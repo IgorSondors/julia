@@ -6,3 +6,4 @@
 *.jpeg
 *tensorboard*
 /highpass_filter/profiling
+*__pycache__*
