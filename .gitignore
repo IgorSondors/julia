@@ -2,4 +2,6 @@
 *.out
 *.npy
 *.h5
+*.png
+*.jpeg
 *tensorboard*
