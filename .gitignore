@@ -5,3 +5,4 @@
 *.png
 *.jpeg
 *tensorboard*
+/highpass_filter/profiling
