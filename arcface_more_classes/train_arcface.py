@@ -444,7 +444,7 @@ def fit(model, train_generator, test_generator, initial_epoch, final_epoch, dst_
                         validation_data=test_generator,
                         workers=num_workers,
                         max_queue_size=max_queue_size,
-                        verbose=1
+                        verbose=2
                         )
     return model, history
 
@@ -452,7 +452,7 @@ def get_model(wght_pth):
     return tf.keras.models.load_model(wght_pth)
 
 if __name__ == '__main__':
-    n_epochs = 10
+    n_epochs = 30
     initial_epoch = 0
     final_epoch = initial_epoch + n_epochs
     img_size = 128
@@ -471,10 +471,10 @@ if __name__ == '__main__':
     csv_train = '/mnt/data/lossless_train_04102022_500cls.csv'
     csv_test = '/mnt/data/lossless_val_04102022_500cls.csv'
 
-    #model = arcface_model(img_size, n_classes, s, m)
+    model = arcface_model(img_size, n_classes, s, m)
     
-    wght_pth = '/home/yandex/igor/julia_storage/arcface/c3ae-128-dct_ugreen3-003-0.0909.h5'
-    model = finetune_arcface(wght_pth, n_classes, s, m)
+    #wght_pth = '/home/yandex/igor/julia_storage/arcface/c3ae-128-dct_ugreen3-003-0.0909.h5'
+    #model = finetune_arcface(wght_pth, n_classes, s, m)
 
     #wght_pth = ''
     #model = arcface_get_model(wght_pth)

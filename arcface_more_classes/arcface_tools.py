@@ -170,9 +170,9 @@ def arcface_model(img_size, n_classes, s, m):
 
 def arcface_load_data(img_size, batch_size, csv_train, csv_test):
     df_train = pd.read_csv(csv_train, sep=',')
-    df_train = df_train[:100000]
+    #df_train = df_train[:100000]
     df_test = pd.read_csv(csv_test, sep=',')
-    df_test = df_test[:130000]
+    #df_test = df_test[:130000]
     df_train['label'] = df_train['label'].astype(int)
     df_test['label'] = df_test['label'].astype(int)
     print(df_test)
