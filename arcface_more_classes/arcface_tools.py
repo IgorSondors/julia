@@ -1,14 +1,9 @@
-import os
-#os.environ['CUDA_VISIBLE_DEVICES'] = '1'
-
 from tensorflow.keras.models import Model
 
-from tensorflow.keras.layers import Dropout, Dense, GlobalAveragePooling2D, Conv2D, Input, Flatten, concatenate
-from tensorflow.keras.layers import BatchNormalization, Activation, AveragePooling2D, multiply, Lambda
+from tensorflow.keras.layers import Dense, Input
+from tensorflow.keras.layers import BatchNormalization
 from tensorflow.keras.layers import Layer
-from tensorflow.keras.preprocessing.image import ImageDataGenerator, load_img
-from tensorflow.keras import optimizers
-from tensorflow.keras.callbacks import ModelCheckpoint, TensorBoard, LearningRateScheduler, ReduceLROnPlateau
+from tensorflow.keras.preprocessing.image import  load_img
 
 import tensorflow as tf
 
@@ -16,7 +11,7 @@ import pandas as pd
 import numpy as np
 import math
 
-from train_s6m2 import *
+from train_arcface import *
  
 def _resolve_training(layer, training):
     if training is None:
@@ -109,7 +104,7 @@ class ArcFace(Layer):
 
 class DataGenerator(tf.keras.utils.Sequence):
     'Generates data for Keras'
-    def __init__(self, img_paths, img_labels, img_size, batch_size, n_classes=2, shuffle=False):
+    def __init__(self, img_paths, img_labels, img_size, batch_size, n_classes=500, shuffle=False):
         'Initialization'
         self.batch_size = batch_size
         self.img_size = img_size
@@ -159,16 +154,16 @@ class DataGenerator(tf.keras.utils.Sequence):
         #X_test = X_test[:, :, :, np.newaxis].astype('float32')
         return X, np.array(img_labels_temp)#.astype(np.uint8)#tf.keras.utils.to_categorical(img_labels_temp, num_classes=self.n_classes)
 
-def arcface_model(img_size):
+def arcface_model(img_size, n_classes, s, m):
 
     input_tensor = Input(shape=(img_size, img_size, 3))
     label = Input(shape=(1,))
 
     base_model_dct = build_shared_plain_network(input_tensor, mode='dct')
     
-    x = Dense(512, kernel_initializer='he_normal')(base_model_dct.output)
+    x = Dense(500, kernel_initializer='he_normal')(base_model_dct.output)
     x = BatchNormalization()(x)
-    output = ArcFace(n_classes=2, s=6.0, m=2.0)([x, tf.cast(label, tf.uint8)])
+    output = ArcFace(n_classes=n_classes, s=s, m=m)([x, tf.cast(label, tf.uint8)])
 
     model = Model([input_tensor, label], output)
     return model
@@ -178,25 +173,37 @@ def arcface_load_data(img_size, batch_size, csv_train, csv_test):
     df_train = df_train[:100000]
     df_test = pd.read_csv(csv_test, sep=',')
     df_test = df_test[:130000]
-    df_train['spoof'] = df_train['spoof'].astype(int)
-    df_test['spoof'] = df_test['spoof'].astype(int)
+    df_train['label'] = df_train['label'].astype(int)
+    df_test['label'] = df_test['label'].astype(int)
     print(df_test)
 
     train_cls_n = []
-    for i in range(df_train['spoof'].nunique()):
-        train_cls_n.append(df_train[df_train.spoof == int(i)].shape[0])
+    for i in range(df_train['label'].nunique()):
+        train_cls_n.append(df_train[df_train.label == int(i)].shape[0])
     print('train_cls_n = ', train_cls_n, len(train_cls_n))
 
     test_cls_n = []
-    for i in range(df_test['spoof'].nunique()):
-        test_cls_n.append(df_test[df_test.spoof == int(i)].shape[0])
+    for i in range(df_test['label'].nunique()):
+        test_cls_n.append(df_test[df_test.label == int(i)].shape[0])
     print('test_cls_n = ', test_cls_n, len(test_cls_n))         
 
-    train_generator=DataGenerator(df_train['file'], df_train['spoof'], img_size, batch_size)
-    test_generator=DataGenerator(df_test['file'], df_test['spoof'], img_size, batch_size)
+    train_generator=DataGenerator(df_train['file'], df_train['label'], img_size, batch_size)
+    test_generator=DataGenerator(df_test['file'], df_test['label'], img_size, batch_size)
 
-    print('test_generator.img_size = ', test_generator.img_size)
     return train_generator, test_generator
+
+def finetune_arcface(wght_pth, n_classes, s, m):
+    model_old = get_model(wght_pth)
+    for layer in model_old.layers[:-1]:
+        layer.trainable = False
+    layer_name = 'dense_10'
+    model2= Model(inputs=model_old.input, outputs=model_old.get_layer(layer_name).output)
+    # Now add a new layer to the model
+    input_tensor = model2.input
+    label = Input(shape=(1,), name='label_input')
+    output = ArcFace(n_classes=n_classes, s=s, m=m)([model2.output, tf.cast(label, tf.uint8)])
+    model = Model([input_tensor, label], output)
+    return model
 
 def arcface_get_model(wght_pth):
     return tf.keras.models.load_model(wght_pth, custom_objects={'ArcFace': ArcFace})

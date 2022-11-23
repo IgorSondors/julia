@@ -434,7 +434,7 @@ def fit(model, train_generator, test_generator, initial_epoch, final_epoch, dst_
                 ]
 
     model.compile(optimizer=optimizer,
-                  loss='binary_crossentropy',
+                  loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
 
     history = model.fit(x=train_generator,
@@ -456,21 +456,39 @@ if __name__ == '__main__':
     initial_epoch = 0
     final_epoch = initial_epoch + n_epochs
     img_size = 128
-    batch_size = 100
+    batch_size = 200
     num_workers = 8
     max_queue_size = 8
     factor = 0.9
     patience = 1
     initial_lr = 0.0017
     min_lr = 0.0000001
-    dst_pth = '/home/yandex/igor/julia/arcface_more_classes'
-    csv_train = '/mnt/data/lossless_train_04102022_crops.csv'
-    csv_test = '/mnt/data/lossless_val_04102022_crops.csv'
+    n_classes = 500
+    s = 64.0
+    m = 0.50
 
-    model = arcface_model(img_size)
+    dst_pth = '/home/yandex/igor/julia/arcface_more_classes'
+    csv_train = '/mnt/data/lossless_train_04102022_500cls.csv'
+    csv_test = '/mnt/data/lossless_val_04102022_500cls.csv'
+
+    #model = arcface_model(img_size, n_classes, s, m)
     
-    #wght_pth = '/home/yandex/igor/julia/arcface/strange/c3ae2-128-epoch:002-val_loss:0.0261-val_accuracy:1.0000.h5'
+    wght_pth = '/home/yandex/igor/julia_storage/arcface/c3ae-128-dct_ugreen3-003-0.0909.h5'
+    model = finetune_arcface(wght_pth, n_classes, s, m)
+
+    #wght_pth = ''
     #model = arcface_get_model(wght_pth)
+    tf.keras.utils.plot_model(
+    model,
+    to_file="{}/arcface.png".format(dst_pth),
+    show_shapes=True,
+    show_dtype=False,
+    show_layer_names=True,
+    rankdir="TB",
+    expand_nested=False,
+    dpi=96,
+    )
+
     print(model.summary())
 
     train_generator, test_generator = arcface_load_data(img_size, batch_size, csv_train, csv_test)
