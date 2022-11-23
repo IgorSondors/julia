@@ -1,0 +1,5 @@
+*.zip
+*.out
+*.npy
+*.h5
+*tensorboard*
