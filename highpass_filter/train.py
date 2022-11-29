@@ -21,6 +21,22 @@ gpus = tf.config.experimental.list_physical_devices('GPU')
 for gpu in gpus:
     tf.config.experimental.set_memory_growth(gpu, True)
 
+#gaussianHP_matrix = np.loadtxt('/home/yandex/igor/julia/highpass_filter/gaussianHP.txt', dtype=float)
+
+def distance(point1,point2):
+    return sqrt((point1[0]-point2[0])**2 + (point1[1]-point2[1])**2)
+
+def gaussianHP(D0,imgShape):
+    base = np.zeros(imgShape[:2])
+    rows, cols = imgShape[:2]
+    center = (rows/2,cols/2)
+    for x in range(cols):
+        for y in range(rows):
+            base[y,x] = 1 - exp(((-distance((y,x),center)**2)/(2*(D0**2))))
+    return base
+
+gaussianHP_matrix = gaussianHP(100, (128, 128, 1))
+
 def dct_2d(
         feature_map,
         norm=None # can also be 'ortho'
@@ -194,7 +210,7 @@ def build_shared_plain_network(input_image, mode, using_SE=True):
     
 def create_model(img_size):
 
-    input_tensor = Input(shape=(img_size, img_size, 1))
+    input_tensor = Input(shape=(img_size, img_size, 3))
 
     base_model_dct = build_shared_plain_network(input_tensor, mode='highpass_filter')
     op_dct = Dropout(.5)(base_model_dct.output)
@@ -288,41 +304,24 @@ def np_highpass_filter(
 
 def tf_highpass_filter(
         feature_map,
-        d0=100,
-        norm=None,
+        gaussianHP_matrix=gaussianHP_matrix,
         dtype = "complex64"
         ):
 
-    def distance(point1,point2):
-        return sqrt((point1[0]-point2[0])**2 + (point1[1]-point2[1])**2)
-
-    def gaussianHP(D0,imgShape):
-        base = np.zeros(imgShape[:2])
-        rows, cols = imgShape[:2]
-        center = (rows/2,cols/2)
-        for x in range(cols):
-            for y in range(rows):
-                base[y,x] = 1 - exp(((-distance((y,x),center)**2)/(2*(D0**2))))
-        return base
-
-    #original = np.fft.fft2(feature_map)
     feature_map = tf.cast(feature_map, dtype)
     original = tf.signal.fft2d(
     feature_map, name=None
     )
 
-    #center = np.fft.fftshift(original)
     center = tf.signal.fftshift(
     original, axes=None, name=None
     )
 
-    HighPassCenter = center * gaussianHP(d0,np.shape(feature_map))
-    #HighPass = np.fft.ifftshift(HighPassCenter)
+    HighPassCenter = center * gaussianHP_matrix
     HighPass = tf.signal.ifftshift(
     HighPassCenter, axes=None, name=None
     )
 
-    #inverse_HighPass = np.fft.ifft2(HighPass)
     inverse_HighPass = tf.signal.ifft2d(
     HighPass, name=None
     )
@@ -355,9 +354,9 @@ def load_data_highpass(img_size, batch_size, csv_train, csv_test):
 
 def load_data(img_size, batch_size, csv_train, csv_test):
     df_train = pd.read_csv(csv_train, sep=',')
-    #df_train = df_train[:100000]
+    df_train = df_train[:10000]
     df_test = pd.read_csv(csv_test, sep=',')
-    #df_test = df_test[:13000]
+    df_test = df_test[:13000]
     df_train['spoof'] = df_train['spoof'].astype(str)
     df_test['spoof'] = df_test['spoof'].astype(str)
     print(df_test)
@@ -376,7 +375,7 @@ def load_data(img_size, batch_size, csv_train, csv_test):
 
     train_generator=train_datagen.flow_from_dataframe(
     dataframe=df_train,
-    color_mode="grayscale",
+    color_mode="rgb",
     x_col="file",
     y_col="spoof",
     batch_size=batch_size,
@@ -388,7 +387,7 @@ def load_data(img_size, batch_size, csv_train, csv_test):
 
     test_generator=test_datagen.flow_from_dataframe(
     dataframe=df_test,
-    color_mode="grayscale",
+    color_mode="rgb",
     x_col="file",
     y_col="spoof",
     batch_size=batch_size,
@@ -438,7 +437,7 @@ def fit(model, train_generator, test_generator, initial_epoch, final_epoch, dst_
                         validation_data=test_generator,
                         workers=num_workers,
                         max_queue_size=max_queue_size,
-                        verbose=2
+                        verbose=1
                         )
     return model, history
 
@@ -447,7 +446,7 @@ def get_model(wght_pth):
 
 if __name__ == '__main__':
     n_epochs = 15
-    initial_epoch = 15
+    initial_epoch = 0
     final_epoch = initial_epoch + n_epochs
     img_size = 128
     batch_size = 100
@@ -455,17 +454,16 @@ if __name__ == '__main__':
     max_queue_size = 8
     factor = 0.9
     patience = 1
-    initial_lr = 0.0008#0.0017
+    initial_lr = 0.0017
     min_lr = 0.0000001
     dst_pth = '/home/yandex/igor/julia/highpass_filter'
     csv_train = '/mnt/data/lossless_train_04102022_crops.csv'
     csv_test = '/mnt/data/lossless_val_04102022_crops.csv'
 
-    #model = arcface_model(img_size)
-    wght_pth = '/home/yandex/igor/julia/highpass_filter/c3ae-128-epoch:015-val_loss:1.0454-val_accuracy:0.7481.h5'
-    model = get_model(wght_pth)
+    #wght_pth = ''
+    #model = get_model(wght_pth)
 
-    #model = create_model(img_size)
+    model = create_model(img_size)
     tf.keras.utils.plot_model(
     model,
     to_file="{}/dct.png".format(dst_pth),
