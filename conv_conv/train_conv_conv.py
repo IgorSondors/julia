@@ -35,6 +35,12 @@ def BRA(input):
     activation = Activation('swish')(bn)
     return AveragePooling2D(pool_size=(2, 2), strides=(2, 2))(activation)
 
+def BRA_conv_conv(input):
+    bn = BatchNormalization()(input)
+    conv01 = Conv2D(32, (3, 3), use_bias=False)(bn)
+    conv02 = Conv2D(32, (3, 3), use_bias=False)(conv01)
+    activation = Activation('swish')(conv02)
+    return AveragePooling2D(pool_size=(2, 2), strides=(2, 2))(activation)
 
 def SE_BLOCK(input, using_SE=True, r_factor=2):
     if not using_SE:
@@ -150,7 +156,7 @@ def build_shared_plain_network(input_image, mode, using_SE=True):
 
         conv1 = Conv2D(32, (3, 3), use_bias=False)(dct)
 
-    block1 = BRA(input=conv1)
+    block1 = BRA_conv_conv(input=conv1)#BRA(input=conv1)
     block1 = SE_BLOCK(input=block1, using_SE=using_SE)
 
     conv2 = Conv2D(32, (3, 3), padding="valid", strides=1, name="conv2_{}".format(mode))(block1)
@@ -182,14 +188,7 @@ def create_model(img_size):
     op_dct = Dropout(.5)(base_model_dct.output)
     x_dct = Dense(32, activation='swish')(op_dct)
 
-    base_model_fft3d = build_shared_plain_network(input_tensor, mode='fft3d')
-    op_fft3d = Dropout(.5)(base_model_fft3d.output)
-    x_fft3d = Dense(32, activation='swish')(op_fft3d)
-
-    concat_parallel = concatenate([x_dct, x_fft3d])
-    x = Dense(12, activation='swish')(concat_parallel)
-
-    output_tensor = Dense(1, activation='sigmoid')(x)
+    output_tensor = Dense(1, activation='sigmoid')(x_dct)
     model = Model(inputs=input_tensor, outputs=output_tensor)
     return model
 
@@ -292,24 +291,35 @@ def get_model(wght_pth):
 
 
 if __name__ == '__main__':
-    n_epochs = 45
-    initial_epoch = 45
+    n_epochs = 20
+    initial_epoch = 0
     final_epoch = initial_epoch + n_epochs
     img_size = 128
     batch_size = 100
     num_workers = 8
     max_queue_size = 8
-    factor = 0.9
+    factor = 0.7
     patience = 1
-    initial_lr = 3*10**(-5)#0.0017
+    initial_lr = 0.0017
     min_lr = 0.0000001
-    dst_pth = '/home/yandex/igor/julia/dct'
+    dst_pth = '/home/yandex/igor/julia/conv_conv'
     csv_train = '/mnt/data/lossless_train_04102022_crops.csv'
     csv_test = '/mnt/data/lossless_val_04102022_crops.csv'
 
-    #model = create_model(img_size)
-    wght_pth = '/home/yandex/igor/julia/dct/c3ae-128-epoch:045-val_loss:0.1405-val_accuracy:0.9417.h5'
-    model = get_model(wght_pth)
+    model = create_model(img_size)
+    #wght_pth = ''
+    #model = get_model(wght_pth)
+    tf.keras.utils.plot_model(
+    model,
+    to_file="{}/conv_conv.png".format(dst_pth),
+    show_shapes=True,
+    show_dtype=False,
+    show_layer_names=True,
+    rankdir="TB",
+    expand_nested=False,
+    dpi=96,
+    )
+
     print(model.summary())
 
     train_generator, test_generator = load_data(img_size, batch_size, csv_train, csv_test)
