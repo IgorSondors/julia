@@ -1,5 +1,5 @@
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+#os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dropout, Dense, GlobalAveragePooling2D, Conv2D, Input, Flatten, concatenate
@@ -284,8 +284,8 @@ def get_model(wght_pth):
 
 
 if __name__ == '__main__':
-    n_epochs = 20
-    initial_epoch = 0
+    n_epochs = 10
+    initial_epoch = 20
     final_epoch = initial_epoch + n_epochs
     img_size = 128
     batch_size = 100
@@ -293,15 +293,15 @@ if __name__ == '__main__':
     max_queue_size = 8
     factor = 0.7
     patience = 1
-    initial_lr = 0.0017
+    initial_lr = 4.8 * 10**(-5)#0.0017
     min_lr = 0.0000001
     dst_pth = '/home/yandex/igor/julia/dct1branch'
     csv_train = '/mnt/data/lossless_train_04102022_crops.csv'
     csv_test = '/mnt/data/lossless_val_04102022_crops.csv'
 
-    model = create_model(img_size)
-    #wght_pth = ''
-    #model = get_model(wght_pth)
+    #model = create_model(img_size)
+    wght_pth = '/home/yandex/igor/julia/dct1branch/c3ae-128-epoch:020-val_loss:0.1386-val_accuracy:0.9445.h5'
+    model = get_model(wght_pth)
     tf.keras.utils.plot_model(
     model,
     to_file="{}/dct1branch.png".format(dst_pth),
