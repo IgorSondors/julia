@@ -1,0 +1,10 @@
+2022-12-14 13:27:25.880760: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+Traceback (most recent call last):
+  File "train_convX4.py", line 5, in <module>
+    policy = tf.keras.mixed_precision.Policy('mixed_float64')
+  File "/home/yandex/anaconda3/envs/cntr/lib/python3.8/site-packages/tensorflow/python/keras/mixed_precision/policy.py", line 201, in __init__
+    self._compute_dtype, self._variable_dtype = self._parse_name(name)
+  File "/home/yandex/anaconda3/envs/cntr/lib/python3.8/site-packages/tensorflow/python/keras/mixed_precision/policy.py", line 252, in _parse_name
+    six.raise_from(ValueError(error), None)
+  File "<string>", line 3, in raise_from
+ValueError: Cannot convert value mixed_float64 to a mixed precision Policy. Valid policies include include 'mixed_float16', 'mixed_bfloat16', and the name of any dtype such as 'float32'.
