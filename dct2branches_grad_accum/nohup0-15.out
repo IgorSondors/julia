@@ -1,0 +1,348 @@
+2022-12-17 18:17:11.379287: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2022-12-17 18:17:12.500277: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2022-12-17 18:17:12.501203: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2022-12-17 18:17:12.763856: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:8b:00.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.56GiB deviceMemoryBandwidth: 298.08GiB/s
+2022-12-17 18:17:12.763908: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2022-12-17 18:17:12.765888: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.10
+2022-12-17 18:17:12.765973: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.10
+2022-12-17 18:17:12.767609: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2022-12-17 18:17:12.767938: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2022-12-17 18:17:12.769859: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2022-12-17 18:17:12.770807: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.10
+2022-12-17 18:17:12.774735: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.7
+2022-12-17 18:17:12.781435: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2022-12-17 18:17:12.814453: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-12-17 18:17:12.817430: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2022-12-17 18:17:12.819344: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:8b:00.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.56GiB deviceMemoryBandwidth: 298.08GiB/s
+2022-12-17 18:17:12.819383: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2022-12-17 18:17:12.819422: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.10
+2022-12-17 18:17:12.819432: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.10
+2022-12-17 18:17:12.819442: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2022-12-17 18:17:12.819452: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2022-12-17 18:17:12.819461: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2022-12-17 18:17:12.819471: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.10
+2022-12-17 18:17:12.819481: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.7
+2022-12-17 18:17:12.822406: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2022-12-17 18:17:12.822470: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2022-12-17 18:17:13.433580: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2022-12-17 18:17:13.433640: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 
+2022-12-17 18:17:13.433647: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N 
+2022-12-17 18:17:13.438200: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 13784 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:8b:00.0, compute capability: 7.5)
+np.shape(wn) =  (None, 128, 128, 3)
+np.shape(dct) =  (None, 128, 128, 3)
+np.shape(wn) =  (None, 128, 128, 3)
+np.shape(fft) =  (None, 128, 128, 6)
+Model: "custom_train_step"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 128, 128, 3) 0                                            
+__________________________________________________________________________________________________
+white_normfft3d (Lambda)        (None, 128, 128, 3)  0           input_1[0][0]                    
+__________________________________________________________________________________________________
+white_normdct (Lambda)          (None, 128, 128, 3)  0           input_1[0][0]                    
+__________________________________________________________________________________________________
+fft (Lambda)                    ((None, 128, 128, 3) 0           white_normfft3d[0][0]            
+__________________________________________________________________________________________________
+dct (Lambda)                    (None, 128, 128, 3)  0           white_normdct[0][0]              
+__________________________________________________________________________________________________
+tf.concat (TFOpLambda)          (None, 128, 128, 6)  0           fft[0][0]                        
+                                                                 fft[0][1]                        
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 126, 126, 32) 864         dct[0][0]                        
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 126, 126, 32) 1728        tf.concat[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 126, 126, 32) 128         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 126, 126, 32) 128         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+activation (Activation)         (None, 126, 126, 32) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 126, 126, 32) 0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+average_pooling2d (AveragePooli (None, 63, 63, 32)   0           activation[0][0]                 
+__________________________________________________________________________________________________
+average_pooling2d_3 (AveragePoo (None, 63, 63, 32)   0           activation_4[0][0]               
+__________________________________________________________________________________________________
+global_average_pooling2d (Globa (None, 32)           0           average_pooling2d[0][0]          
+__________________________________________________________________________________________________
+global_average_pooling2d_5 (Glo (None, 32)           0           average_pooling2d_3[0][0]        
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 16)           528         global_average_pooling2d[0][0]   
+__________________________________________________________________________________________________
+dense_11 (Dense)                (None, 16)           528         global_average_pooling2d_5[0][0] 
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 32)           544         dense[0][0]                      
+__________________________________________________________________________________________________
+dense_12 (Dense)                (None, 32)           544         dense_11[0][0]                   
+__________________________________________________________________________________________________
+multiply (Multiply)             (None, 63, 63, 32)   0           dense_1[0][0]                    
+                                                                 average_pooling2d[0][0]          
+__________________________________________________________________________________________________
+multiply_5 (Multiply)           (None, 63, 63, 32)   0           dense_12[0][0]                   
+                                                                 average_pooling2d_3[0][0]        
+__________________________________________________________________________________________________
+conv2_dct (Conv2D)              (None, 61, 61, 32)   9248        multiply[0][0]                   
+__________________________________________________________________________________________________
+conv2_fft3d (Conv2D)            (None, 61, 61, 32)   9248        multiply_5[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 61, 61, 32)   128         conv2_dct[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 61, 61, 32)   128         conv2_fft3d[0][0]                
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 61, 61, 32)   0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 61, 61, 32)   0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+average_pooling2d_1 (AveragePoo (None, 30, 30, 32)   0           activation_1[0][0]               
+__________________________________________________________________________________________________
+average_pooling2d_4 (AveragePoo (None, 30, 30, 32)   0           activation_5[0][0]               
+__________________________________________________________________________________________________
+global_average_pooling2d_1 (Glo (None, 32)           0           average_pooling2d_1[0][0]        
+__________________________________________________________________________________________________
+global_average_pooling2d_6 (Glo (None, 32)           0           average_pooling2d_4[0][0]        
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 16)           528         global_average_pooling2d_1[0][0] 
+__________________________________________________________________________________________________
+dense_13 (Dense)                (None, 16)           528         global_average_pooling2d_6[0][0] 
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 32)           544         dense_2[0][0]                    
+__________________________________________________________________________________________________
+dense_14 (Dense)                (None, 32)           544         dense_13[0][0]                   
+__________________________________________________________________________________________________
+multiply_1 (Multiply)           (None, 30, 30, 32)   0           dense_3[0][0]                    
+                                                                 average_pooling2d_1[0][0]        
+__________________________________________________________________________________________________
+multiply_6 (Multiply)           (None, 30, 30, 32)   0           dense_14[0][0]                   
+                                                                 average_pooling2d_4[0][0]        
+__________________________________________________________________________________________________
+conv3_dct (Conv2D)              (None, 28, 28, 32)   9248        multiply_1[0][0]                 
+__________________________________________________________________________________________________
+conv3_fft3d (Conv2D)            (None, 28, 28, 32)   9248        multiply_6[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 28, 28, 32)   128         conv3_dct[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 28, 28, 32)   128         conv3_fft3d[0][0]                
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 28, 28, 32)   0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 28, 28, 32)   0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+average_pooling2d_2 (AveragePoo (None, 14, 14, 32)   0           activation_2[0][0]               
+__________________________________________________________________________________________________
+average_pooling2d_5 (AveragePoo (None, 14, 14, 32)   0           activation_6[0][0]               
+__________________________________________________________________________________________________
+global_average_pooling2d_2 (Glo (None, 32)           0           average_pooling2d_2[0][0]        
+__________________________________________________________________________________________________
+global_average_pooling2d_7 (Glo (None, 32)           0           average_pooling2d_5[0][0]        
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 16)           528         global_average_pooling2d_2[0][0] 
+__________________________________________________________________________________________________
+dense_15 (Dense)                (None, 16)           528         global_average_pooling2d_7[0][0] 
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 32)           544         dense_4[0][0]                    
+__________________________________________________________________________________________________
+dense_16 (Dense)                (None, 32)           544         dense_15[0][0]                   
+__________________________________________________________________________________________________
+multiply_2 (Multiply)           (None, 14, 14, 32)   0           dense_5[0][0]                    
+                                                                 average_pooling2d_2[0][0]        
+__________________________________________________________________________________________________
+multiply_7 (Multiply)           (None, 14, 14, 32)   0           dense_16[0][0]                   
+                                                                 average_pooling2d_5[0][0]        
+__________________________________________________________________________________________________
+conv4_dct (Conv2D)              (None, 12, 12, 32)   9216        multiply_2[0][0]                 
+__________________________________________________________________________________________________
+conv4_fft3d (Conv2D)            (None, 12, 12, 32)   9216        multiply_7[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 12, 12, 32)   128         conv4_dct[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 12, 12, 32)   128         conv4_fft3d[0][0]                
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 12, 12, 32)   0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 12, 12, 32)   0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+global_average_pooling2d_3 (Glo (None, 32)           0           activation_3[0][0]               
+__________________________________________________________________________________________________
+global_average_pooling2d_8 (Glo (None, 32)           0           activation_7[0][0]               
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 16)           528         global_average_pooling2d_3[0][0] 
+__________________________________________________________________________________________________
+dense_17 (Dense)                (None, 16)           528         global_average_pooling2d_8[0][0] 
+__________________________________________________________________________________________________
+dense_7 (Dense)                 (None, 32)           544         dense_6[0][0]                    
+__________________________________________________________________________________________________
+dense_18 (Dense)                (None, 32)           544         dense_17[0][0]                   
+__________________________________________________________________________________________________
+multiply_3 (Multiply)           (None, 12, 12, 32)   0           dense_7[0][0]                    
+                                                                 activation_3[0][0]               
+__________________________________________________________________________________________________
+multiply_8 (Multiply)           (None, 12, 12, 32)   0           dense_18[0][0]                   
+                                                                 activation_7[0][0]               
+__________________________________________________________________________________________________
+conv5_dct (Conv2D)              (None, 12, 12, 32)   1056        multiply_3[0][0]                 
+__________________________________________________________________________________________________
+conv5_fft3d (Conv2D)            (None, 12, 12, 32)   1056        multiply_8[0][0]                 
+__________________________________________________________________________________________________
+global_average_pooling2d_4 (Glo (None, 32)           0           conv5_dct[0][0]                  
+__________________________________________________________________________________________________
+global_average_pooling2d_9 (Glo (None, 32)           0           conv5_fft3d[0][0]                
+__________________________________________________________________________________________________
+dense_8 (Dense)                 (None, 16)           528         global_average_pooling2d_4[0][0] 
+__________________________________________________________________________________________________
+dense_19 (Dense)                (None, 16)           528         global_average_pooling2d_9[0][0] 
+__________________________________________________________________________________________________
+dense_9 (Dense)                 (None, 32)           544         dense_8[0][0]                    
+__________________________________________________________________________________________________
+dense_20 (Dense)                (None, 32)           544         dense_19[0][0]                   
+WARNING:tensorflow:`period` argument is deprecated. Please use `save_freq` to specify the frequency in number of batches seen.
+2022-12-17 18:17:54.716423: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2022-12-17 18:17:54.716837: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 1995310000 Hz
+2022-12-17 18:17:59.623985: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.10
+2022-12-17 18:18:00.596753: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2022-12-17 18:18:00.972292: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.7
+2022-12-17 18:18:02.013113: W tensorflow/stream_executor/gpu/asm_compiler.cc:63] Running ptxas --version returned 256
+2022-12-17 18:18:02.163899: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 256, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+__________________________________________________________________________________________________
+multiply_4 (Multiply)           (None, 12, 12, 32)   0           dense_9[0][0]                    
+                                                                 conv5_dct[0][0]                  
+__________________________________________________________________________________________________
+multiply_9 (Multiply)           (None, 12, 12, 32)   0           dense_20[0][0]                   
+                                                                 conv5_fft3d[0][0]                
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 4608)         0           multiply_4[0][0]                 
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 4608)         0           multiply_9[0][0]                 
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 4608)         0           flatten[0][0]                    
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 4608)         0           flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense_10 (Dense)                (None, 32)           147488      dropout[0][0]                    
+__________________________________________________________________________________________________
+dense_21 (Dense)                (None, 32)           147488      dropout_1[0][0]                  
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 64)           0           dense_10[0][0]                   
+                                                                 dense_21[0][0]                   
+__________________________________________________________________________________________________
+dense_22 (Dense)                (None, 12)           780         concatenate[0][0]                
+__________________________________________________________________________________________________
+dense_23 (Dense)                (None, 1)            13          dense_22[0][0]                   
+==================================================================================================
+Total params: 734,771
+Trainable params: 367,129
+Non-trainable params: 367,642
+__________________________________________________________________________________________________
+None
+                                                    file spoof
+0      /mnt/data/lossless_val_04102022_crops/1/chrome...     1
+1      /mnt/data/lossless_val_04102022_crops/1/2d7db3...     1
+2      /mnt/data/lossless_val_04102022_crops/1/chroma...     1
+3      /mnt/data/lossless_val_04102022_crops/0/c86649...     0
+4      /mnt/data/lossless_val_04102022_crops/1/chrome...     1
+...                                                  ...   ...
+40073  /mnt/data/lossless_val_04102022_crops/1/chrome...     1
+40074  /mnt/data/lossless_val_04102022_crops/0/5c2b86...     0
+40075  /mnt/data/lossless_val_04102022_crops/0/5c79a2...     0
+40076  /mnt/data/lossless_val_04102022_crops/1/firefo...     1
+40077  /mnt/data/lossless_val_04102022_crops/1/63559a...     1
+
+[40078 rows x 2 columns]
+train_cls_n =  [2785410, 2859310] 2
+test_cls_n =  [19998, 20080] 2
+Found 5644720 validated image filenames belonging to 2 classes.
+Found 40078 validated image filenames belonging to 2 classes.
+Epoch 1/15
+11290/11290 - 8533s - loss: 0.6651 - accuracy: 0.6159 - val_loss: 0.5702 - val_accuracy: 0.7041
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00001: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:001-val_loss:0.5702-val_accuracy:0.7041.h5
+Epoch 2/15
+11290/11290 - 8469s - loss: 0.5495 - accuracy: 0.7278 - val_loss: 0.5389 - val_accuracy: 0.7217
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00002: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:002-val_loss:0.5389-val_accuracy:0.7217.h5
+Epoch 3/15
+11290/11290 - 8462s - loss: 0.4991 - accuracy: 0.7707 - val_loss: 0.5010 - val_accuracy: 0.7590
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00003: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:003-val_loss:0.5010-val_accuracy:0.7590.h5
+Epoch 4/15
+11290/11290 - 8462s - loss: 0.4700 - accuracy: 0.7859 - val_loss: 0.5592 - val_accuracy: 0.6926
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00004: ReduceLROnPlateau reducing learning rate to 0.0011900000157766043.
+
+Epoch 00004: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:004-val_loss:0.5592-val_accuracy:0.6926.h5
+Epoch 5/15
+11290/11290 - 8458s - loss: 0.4223 - accuracy: 0.8146 - val_loss: 0.4872 - val_accuracy: 0.7745
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00005: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:005-val_loss:0.4872-val_accuracy:0.7745.h5
+Epoch 6/15
+11290/11290 - 8465s - loss: 0.4027 - accuracy: 0.8264 - val_loss: 0.4583 - val_accuracy: 0.7944
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00006: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:006-val_loss:0.4583-val_accuracy:0.7944.h5
+Epoch 7/15
+11290/11290 - 8467s - loss: 0.3739 - accuracy: 0.8414 - val_loss: 0.6205 - val_accuracy: 0.6565
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00007: ReduceLROnPlateau reducing learning rate to 0.0008329999865964054.
+
+Epoch 00007: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:007-val_loss:0.6205-val_accuracy:0.6565.h5
+Epoch 8/15
+11290/11290 - 8442s - loss: 0.3463 - accuracy: 0.8551 - val_loss: 0.3975 - val_accuracy: 0.8292
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00008: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:008-val_loss:0.3975-val_accuracy:0.8292.h5
+Epoch 9/15
+11290/11290 - 8441s - loss: 0.3389 - accuracy: 0.8588 - val_loss: 0.4015 - val_accuracy: 0.8255
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00009: ReduceLROnPlateau reducing learning rate to 0.0005830999987665563.
+
+Epoch 00009: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:009-val_loss:0.4015-val_accuracy:0.8255.h5
+Epoch 10/15
+11290/11290 - 8432s - loss: 0.3194 - accuracy: 0.8685 - val_loss: 0.3655 - val_accuracy: 0.8446
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00010: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:010-val_loss:0.3655-val_accuracy:0.8446.h5
+Epoch 11/15
+11290/11290 - 8426s - loss: 0.3133 - accuracy: 0.8707 - val_loss: 0.3698 - val_accuracy: 0.8396
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00011: ReduceLROnPlateau reducing learning rate to 0.0004081700113601982.
+
+Epoch 00011: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:011-val_loss:0.3698-val_accuracy:0.8396.h5
+Epoch 12/15
+11290/11290 - 8421s - loss: 0.3028 - accuracy: 0.8759 - val_loss: 0.3542 - val_accuracy: 0.8480
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00012: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:012-val_loss:0.3542-val_accuracy:0.8480.h5
+Epoch 13/15
+11290/11290 - 8409s - loss: 0.3002 - accuracy: 0.8767 - val_loss: 0.3493 - val_accuracy: 0.8480
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00013: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:013-val_loss:0.3493-val_accuracy:0.8480.h5
+Epoch 14/15
+11290/11290 - 8413s - loss: 0.2929 - accuracy: 0.8801 - val_loss: 0.5056 - val_accuracy: 0.7479
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00014: ReduceLROnPlateau reducing learning rate to 0.00028571901202667505.
+
+Epoch 00014: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:014-val_loss:0.5056-val_accuracy:0.7479.h5
+Epoch 15/15
+11290/11290 - 8422s - loss: 0.2856 - accuracy: 0.8835 - val_loss: 0.3402 - val_accuracy: 0.8532
+WARNING:tensorflow:Found duplicated `Variable`s in Model's `weights`. This is usually caused by `Variable`s being shared by Layers in the Model. These `Variable`s will be treated as separate `Variable`s when the Model is restored. To avoid this, please save with `save_format="tf"`.
+
+Epoch 00015: saving model to /home/yandex/igor/julia/dct_grad_accum/c3ae-128-epoch:015-val_loss:0.3402-val_accuracy:0.8532.h5

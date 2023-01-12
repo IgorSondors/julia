@@ -1,0 +1,225 @@
+2022-11-19 00:06:48.328420: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2022-11-19 00:06:49.280636: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2022-11-19 00:06:49.281304: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2022-11-19 00:06:49.433615: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:8b:00.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.56GiB deviceMemoryBandwidth: 298.08GiB/s
+2022-11-19 00:06:49.433651: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2022-11-19 00:06:49.434994: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.10
+2022-11-19 00:06:49.435058: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.10
+2022-11-19 00:06:49.436329: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2022-11-19 00:06:49.436596: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2022-11-19 00:06:49.437913: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2022-11-19 00:06:49.438692: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.10
+2022-11-19 00:06:49.441568: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.7
+2022-11-19 00:06:49.446573: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+WARNING:tensorflow:AutoGraph could not transform <function tf_highpass_filter at 0x7f06e7dbb3a0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: module 'gast' has no attribute 'Index'
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+2022-11-19 00:06:49.500490: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-11-19 00:06:49.502585: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2022-11-19 00:06:49.505282: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:8b:00.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.56GiB deviceMemoryBandwidth: 298.08GiB/s
+2022-11-19 00:06:49.505309: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2022-11-19 00:06:49.505333: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.10
+2022-11-19 00:06:49.505342: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.10
+2022-11-19 00:06:49.505350: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2022-11-19 00:06:49.505359: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2022-11-19 00:06:49.505367: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2022-11-19 00:06:49.505375: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.10
+2022-11-19 00:06:49.505393: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.7
+2022-11-19 00:06:49.510264: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2022-11-19 00:06:49.510301: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2022-11-19 00:06:50.112331: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2022-11-19 00:06:50.112390: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 
+2022-11-19 00:06:50.112397: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N 
+2022-11-19 00:06:50.116557: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 13784 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:8b:00.0, compute capability: 7.5)
+np.shape(norm) =  (None, 128, 128, 128)
+Model: "model_1"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 128, 128, 1) 0                                            
+__________________________________________________________________________________________________
+highpass_filter (Lambda)        (None, 128, 128, 128 0           input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 126, 126, 32) 36864       highpass_filter[0][0]            
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 126, 126, 32) 128         conv2d[0][0]                     
+__________________________________________________________________________________________________
+activation (Activation)         (None, 126, 126, 32) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+average_pooling2d (AveragePooli (None, 63, 63, 32)   0           activation[0][0]                 
+__________________________________________________________________________________________________
+global_average_pooling2d (Globa (None, 32)           0           average_pooling2d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 16)           528         global_average_pooling2d[0][0]   
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 32)           544         dense[0][0]                      
+__________________________________________________________________________________________________
+multiply (Multiply)             (None, 63, 63, 32)   0           dense_1[0][0]                    
+                                                                 average_pooling2d[0][0]          
+__________________________________________________________________________________________________
+conv2_highpass_filter (Conv2D)  (None, 61, 61, 32)   9248        multiply[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 61, 61, 32)   128         conv2_highpass_filter[0][0]      
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 61, 61, 32)   0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+average_pooling2d_1 (AveragePoo (None, 30, 30, 32)   0           activation_1[0][0]               
+__________________________________________________________________________________________________
+global_average_pooling2d_1 (Glo (None, 32)           0           average_pooling2d_1[0][0]        
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 16)           528         global_average_pooling2d_1[0][0] 
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 32)           544         dense_2[0][0]                    
+__________________________________________________________________________________________________
+multiply_1 (Multiply)           (None, 30, 30, 32)   0           dense_3[0][0]                    
+                                                                 average_pooling2d_1[0][0]        
+__________________________________________________________________________________________________
+conv3_highpass_filter (Conv2D)  (None, 28, 28, 32)   9248        multiply_1[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 28, 28, 32)   128         conv3_highpass_filter[0][0]      
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 28, 28, 32)   0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+average_pooling2d_2 (AveragePoo (None, 14, 14, 32)   0           activation_2[0][0]               
+__________________________________________________________________________________________________
+global_average_pooling2d_2 (Glo (None, 32)           0           average_pooling2d_2[0][0]        
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 16)           528         global_average_pooling2d_2[0][0] 
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 32)           544         dense_4[0][0]                    
+__________________________________________________________________________________________________
+multiply_2 (Multiply)           (None, 14, 14, 32)   0           dense_5[0][0]                    
+                                                                 average_pooling2d_2[0][0]        
+__________________________________________________________________________________________________
+conv4_highpass_filter (Conv2D)  (None, 12, 12, 32)   9216        multiply_2[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 12, 12, 32)   128         conv4_highpass_filter[0][0]      
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 12, 12, 32)   0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+global_average_pooling2d_3 (Glo (None, 32)           0           activation_3[0][0]               
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 16)           528         global_average_pooling2d_3[0][0] 
+__________________________________________________________________________________________________
+dense_7 (Dense)                 (None, 32)           544         dense_6[0][0]                    
+__________________________________________________________________________________________________
+multiply_3 (Multiply)           (None, 12, 12, 32)   0           dense_7[0][0]                    
+                                                                 activation_3[0][0]               
+__________________________________________________________________________________________________
+conv5_highpass_filter (Conv2D)  (None, 12, 12, 32)   1056        multiply_3[0][0]                 
+__________________________________________________________________________________________________
+global_average_pooling2d_4 (Glo (None, 32)           0           conv5_highpass_filter[0][0]      
+__________________________________________________________________________________________________
+dense_8 (Dense)                 (None, 16)           528         global_average_pooling2d_4[0][0] 
+__________________________________________________________________________________________________
+dense_9 (Dense)                 (None, 32)           544         dense_8[0][0]                    
+__________________________________________________________________________________________________
+multiply_4 (Multiply)           (None, 12, 12, 32)   0           dense_9[0][0]                    
+WARNING:tensorflow:`period` argument is deprecated. Please use `save_freq` to specify the frequency in number of batches seen.
+2022-11-19 00:07:26.920424: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2022-11-19 00:07:26.920768: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 1995310000 Hz
+2022-11-19 00:07:28.503029: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.10
+2022-11-19 00:07:29.565617: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2022-11-19 00:07:31.376786: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.7
+2022-11-19 00:07:32.305046: W tensorflow/stream_executor/gpu/asm_compiler.cc:63] Running ptxas --version returned 256
+2022-11-19 00:07:32.366413: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 256, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+                                                                 conv5_highpass_filter[0][0]      
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 4608)         0           multiply_4[0][0]                 
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 4608)         0           flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_10 (Dense)                (None, 32)           147488      dropout[0][0]                    
+__________________________________________________________________________________________________
+dense_11 (Dense)                (None, 1)            33          dense_10[0][0]                   
+==================================================================================================
+Total params: 219,025
+Trainable params: 218,769
+Non-trainable params: 256
+__________________________________________________________________________________________________
+None
+                                                    file spoof
+0      /mnt/data/lossless_val_04102022_crops/1/chrome...     1
+1      /mnt/data/lossless_val_04102022_crops/1/2d7db3...     1
+2      /mnt/data/lossless_val_04102022_crops/1/chroma...     1
+3      /mnt/data/lossless_val_04102022_crops/0/c86649...     0
+4      /mnt/data/lossless_val_04102022_crops/1/chrome...     1
+...                                                  ...   ...
+40073  /mnt/data/lossless_val_04102022_crops/1/chrome...     1
+40074  /mnt/data/lossless_val_04102022_crops/0/5c2b86...     0
+40075  /mnt/data/lossless_val_04102022_crops/0/5c79a2...     0
+40076  /mnt/data/lossless_val_04102022_crops/1/firefo...     1
+40077  /mnt/data/lossless_val_04102022_crops/1/63559a...     1
+
+[40078 rows x 2 columns]
+train_cls_n =  [2785410, 2859310] 2
+test_cls_n =  [19998, 20080] 2
+Found 5644720 validated image filenames belonging to 2 classes.
+Found 40078 validated image filenames belonging to 2 classes.
+Epoch 1/30
+11290/11290 - 24262s - loss: 0.4276 - accuracy: 0.8059 - val_loss: 1.8820 - val_accuracy: 0.5290
+
+Epoch 00001: saving model to /home/yandex/igor/julia/highpass_filter_fix/c3ae-128-epoch:001-val_loss:1.8820-val_accuracy:0.5290.h5
+Epoch 2/30
+11290/11290 - 23635s - loss: 0.3234 - accuracy: 0.8668 - val_loss: 0.6602 - val_accuracy: 0.6486
+
+Epoch 00002: saving model to /home/yandex/igor/julia/highpass_filter_fix/c3ae-128-epoch:002-val_loss:0.6602-val_accuracy:0.6486.h5
+Epoch 3/30
+11290/11290 - 24434s - loss: 0.2794 - accuracy: 0.8887 - val_loss: 1.5953 - val_accuracy: 0.5300
+
+Epoch 00003: ReduceLROnPlateau reducing learning rate to 0.0015300000202842056.
+
+Epoch 00003: saving model to /home/yandex/igor/julia/highpass_filter_fix/c3ae-128-epoch:003-val_loss:1.5953-val_accuracy:0.5300.h5
+Epoch 4/30
+11290/11290 - 24446s - loss: 0.2490 - accuracy: 0.9025 - val_loss: 1.8128 - val_accuracy: 0.6811
+
+Epoch 00004: ReduceLROnPlateau reducing learning rate to 0.0013770000077784061.
+
+Epoch 00004: saving model to /home/yandex/igor/julia/highpass_filter_fix/c3ae-128-epoch:004-val_loss:1.8128-val_accuracy:0.6811.h5
+Epoch 5/30
+11290/11290 - 23557s - loss: 0.2311 - accuracy: 0.9108 - val_loss: 0.6574 - val_accuracy: 0.7092
+
+Epoch 00005: saving model to /home/yandex/igor/julia/highpass_filter_fix/c3ae-128-epoch:005-val_loss:0.6574-val_accuracy:0.7092.h5
+Epoch 6/30
+11290/11290 - 23529s - loss: 0.2238 - accuracy: 0.9142 - val_loss: 0.4014 - val_accuracy: 0.8178
+
+Epoch 00006: saving model to /home/yandex/igor/julia/highpass_filter_fix/c3ae-128-epoch:006-val_loss:0.4014-val_accuracy:0.8178.h5
+Epoch 7/30
+11290/11290 - 23526s - loss: 0.2159 - accuracy: 0.9176 - val_loss: 1.1374 - val_accuracy: 0.6450
+
+Epoch 00007: ReduceLROnPlateau reducing learning rate to 0.0012393000070005655.
+
+Epoch 00007: saving model to /home/yandex/igor/julia/highpass_filter_fix/c3ae-128-epoch:007-val_loss:1.1374-val_accuracy:0.6450.h5
+Epoch 8/30
+11290/11290 - 23528s - loss: 0.2068 - accuracy: 0.9213 - val_loss: 0.4562 - val_accuracy: 0.8131
+
+Epoch 00008: ReduceLROnPlateau reducing learning rate to 0.001115370006300509.
+
+Epoch 00008: saving model to /home/yandex/igor/julia/highpass_filter_fix/c3ae-128-epoch:008-val_loss:0.4562-val_accuracy:0.8131.h5
+Epoch 9/30
+11290/11290 - 23560s - loss: 0.1998 - accuracy: 0.9245 - val_loss: 4.2005 - val_accuracy: 0.5661
+
+Epoch 00009: ReduceLROnPlateau reducing learning rate to 0.0010038329637609422.
+
+Epoch 00009: saving model to /home/yandex/igor/julia/highpass_filter_fix/c3ae-128-epoch:009-val_loss:4.2005-val_accuracy:0.5661.h5
+Epoch 10/30
+11290/11290 - 23523s - loss: 0.1941 - accuracy: 0.9271 - val_loss: 2.7158 - val_accuracy: 0.7206
+
+Epoch 00010: ReduceLROnPlateau reducing learning rate to 0.0009034497197717428.
+
+Epoch 00010: saving model to /home/yandex/igor/julia/highpass_filter_fix/c3ae-128-epoch:010-val_loss:2.7158-val_accuracy:0.7206.h5
+Epoch 11/30
+11290/11290 - 23522s - loss: 0.1876 - accuracy: 0.9296 - val_loss: 0.3648 - val_accuracy: 0.8518
+
+Epoch 00011: saving model to /home/yandex/igor/julia/highpass_filter_fix/c3ae-128-epoch:011-val_loss:0.3648-val_accuracy:0.8518.h5
+Epoch 12/30
+11290/11290 - 23526s - loss: 0.1854 - accuracy: 0.9303 - val_loss: 1.6441 - val_accuracy: 0.6865
