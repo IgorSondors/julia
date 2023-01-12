@@ -1,0 +1,130 @@
+2023-01-12 04:37:57.704288: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+/home/ubuntu/anaconda3/envs/py39/lib/python3.9/site-packages/scipy/__init__.py:146: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.23.1
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion}"
+2023-01-12 04:37:58.842712: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2023-01-12 04:37:58.843757: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2023-01-12 04:37:58.884383: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-01-12 04:37:58.886718: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:00:06.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.56GiB deviceMemoryBandwidth: 298.08GiB/s
+2023-01-12 04:37:58.886752: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2023-01-12 04:37:58.888703: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.10
+2023-01-12 04:37:58.888775: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.10
+2023-01-12 04:37:58.890801: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2023-01-12 04:37:58.891196: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2023-01-12 04:37:58.893285: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2023-01-12 04:37:58.894321: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.10
+2023-01-12 04:37:58.897698: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.7
+2023-01-12 04:37:58.897841: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-01-12 04:37:58.900800: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-01-12 04:37:58.903356: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2023-01-12 04:37:58.934667: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-01-12 04:37:58.936387: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2023-01-12 04:37:58.936539: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-01-12 04:37:58.940462: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:00:06.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.56GiB deviceMemoryBandwidth: 298.08GiB/s
+2023-01-12 04:37:58.940498: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2023-01-12 04:37:58.940522: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.10
+2023-01-12 04:37:58.940656: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.10
+2023-01-12 04:37:58.940667: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2023-01-12 04:37:58.940675: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2023-01-12 04:37:58.940684: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2023-01-12 04:37:58.940692: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.10
+2023-01-12 04:37:58.940705: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.7
+2023-01-12 04:37:58.940769: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-01-12 04:37:58.943634: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-01-12 04:37:58.946820: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2023-01-12 04:37:58.946876: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2023-01-12 04:38:00.842493: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2023-01-12 04:38:00.842559: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 
+2023-01-12 04:38:00.842567: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N 
+2023-01-12 04:38:00.842792: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-01-12 04:38:00.847474: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-01-12 04:38:00.851653: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2023-01-12 04:38:00.854784: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 4707 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:00:06.0, compute capability: 7.5)
+np.shape(wn) =  (None, 128, 128, 3)
+np.shape(dct) =  (None, 128, 128, 3)
+Model: "model_1"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 128, 128, 3) 0                                            
+__________________________________________________________________________________________________
+white_norm_dct (Lambda)         (None, 128, 128, 3)  0           input_1[0][0]                    
+__________________________________________________________________________________________________
+dct (Lambda)                    (None, 128, 128, 3)  0           white_norm_dct[0][0]             
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 126, 126, 32) 864         dct[0][0]                        
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 126, 126, 32) 128         conv2d[0][0]                     
+__________________________________________________________________________________________________
+activation (Activation)         (None, 126, 126, 32) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 124, 124, 32) 9216        activation[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 124, 124, 32) 128         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 124, 124, 32) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 122, 122, 32) 9216        activation_1[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 122, 122, 32) 128         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 122, 122, 32) 0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 120, 120, 32) 9216        activation_2[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 120, 120, 32) 128         conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 120, 120, 32) 0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+average_pooling2d (AveragePooli (None, 60, 60, 32)   0           activation_3[0][0]               
+__________________________________________________________________________________________________
+global_average_pooling2d (Globa (None, 32)           0           average_pooling2d[0][0]          
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 16)           528         global_average_pooling2d[0][0]   
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 32)           544         dense[0][0]                      
+__________________________________________________________________________________________________
+multiply (Multiply)             (None, 60, 60, 32)   0           dense_1[0][0]                    
+                                                                 average_pooling2d[0][0]          
+__________________________________________________________________________________________________
+conv2_dct (Conv2D)              (None, 58, 58, 32)   9248        multiply[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 58, 58, 32)   128         conv2_dct[0][0]                  
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 58, 58, 32)   0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+average_pooling2d_1 (AveragePoo (None, 29, 29, 32)   0           activation_4[0][0]               
+__________________________________________________________________________________________________
+global_average_pooling2d_1 (Glo (None, 32)           0           average_pooling2d_1[0][0]        
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 16)           528         global_average_pooling2d_1[0][0] 
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 32)           544         dense_2[0][0]                    
+__________________________________________________________________________________________________
+multiply_1 (Multiply)           (None, 29, 29, 32)   0           dense_3[0][0]                    
+                                                                 average_pooling2d_1[0][0]        
+__________________________________________________________________________________________________
+conv3_dct (Conv2D)              (None, 27, 27, 32)   9248        multiply_1[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 27, 27, 32)   128         conv3_dct[0][0]                  
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 27, 27, 32)   0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+average_pooling2d_2 (AveragePoo (None, 13, 13, 32)   0           activation_5[0][0]               
+__________________________________________________________________________________________________
+global_average_pooling2d_2 (Glo (None, 32)           0           average_pooling2d_2[0][0]        
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 16)           528         global_average_pooling2d_2[0][0] 
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 32)           544         dense_4[0][0]                    
+__________________________________________________________________________________________________
+multiply_2 (Multiply)           (None, 13, 13, 32)   0           dense_5[0][0]                    
+                                                                 average_pooling2d_2[0][0]        
+__________________________________________________________________________________________________
+conv4_dct (Conv2D)              (None, 11, 11, 32)   9216        multiply_2[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 11, 11, 32)   128         conv4_dct[0][0]                  
