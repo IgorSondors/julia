@@ -4,35 +4,35 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 import tensorflow as tf
 import pandas as pd
 import numpy as np
-import random
+#import random
 import glob
-import time
 
-source = '/mnt/data/lossless_val_04102022'
+source = '/home/ubuntu/camera_spoofing/lossless_unified/val'
+final_destination = '/home/ubuntu/camera_spoofing/lossless_unified/val_10random_crops'
+os.makedirs(os.path.join(final_destination,'0'), exist_ok=True)
+os.makedirs(os.path.join(final_destination,'1'), exist_ok=True)
+
 filenames = glob.glob(os.path.join(source, '**', "*.*g"), recursive=True)
 #file_shuffled_list = random.sample(filenames, len(filenames)//4)
 
-dirname = 'crops'
+print(len(filenames))
 error_counter = 0
 counter = 0
-spoofs = []
+error_pths = []
 pths = []
+spoofs = []
 
-final_destination = source+'_'+dirname
-
-os.makedirs(os.path.join(final_destination,'0'), exist_ok=True)
-os.makedirs(os.path.join(final_destination,'1'), exist_ok=True)
-start_time = time.time()
-for filename in filenames:
-    counter = counter + 1
-    print(counter)
-
+for filename in filenames:   
     try:
-        name = filename.split('/')[-1]
-        if filename.split('/')[4] == '0':
+        counter = counter + 1
+        print(counter)
+
+        if '0' in filename.split('/'):
             spoof = '0'
-        elif filename.split('/')[4] == '1':
+        elif '1' in filename.split('/'):
             spoof = '1'
+
+        name = filename.split('/')[-1]
 
         image = tf.io.read_file(filename)
         image = tf.io.decode_image(image, channels=3)
@@ -55,13 +55,19 @@ for filename in filenames:
 
     except:
         error_counter = error_counter + 1
+        error_pths.append(filename)
         print(filename.split('/'))
         continue
 
 df = pd.DataFrame({'file': pths})
 df['spoof'] = spoofs
-df.to_csv('{}_{}.csv'.format(source, dirname), index=False)
+df.to_csv('/home/ubuntu/camera_spoofing/lossless_unified/val_10random_crops.csv', index=False)
 
+df_error = pd.DataFrame({'error_file': error_pths})
+df_error.to_csv('/home/ubuntu/camera_spoofing/lossless_unified/val_errors.csv', index=False)
+
+print('files_for_crop_counter = ', counter)
+print('crops_counter = ', len(pths))
+
+print('error_files_counter = ', len(error_pths))
 print('error_counter = ', error_counter)
-
-print('time spent = ', time.time() - start_time)

@@ -1,7 +1,7 @@
 import os
 import glob
 import pandas as pd
-source = '/mnt/data/camera_spoofing/lossless_train_16072022'
+source = '/home/ubuntu/camera_spoofing/lossless_unified/lossless_val_10012023'
 filenames = glob.glob(os.path.join(source, '**', "*.*g"), recursive=True)
 
 small_counter_0 = 0
@@ -10,9 +10,9 @@ sizes = 0
 sizes_list = []
 blacklist = []
 for filename in filenames:
-    if filename.split('/')[5] == '0':
+    if '0' in filename.split('/'):
         spoof = '0'
-    else:
+    elif '1' in filename.split('/'):
         spoof = '1'
     name = filename.split('/')[-1][:-(1+len(filename.split('.')[-1]))]
     size = os.path.getsize(filename)
