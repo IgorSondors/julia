@@ -128,3 +128,15 @@ ________________________________________________________________________________
 conv4_dct (Conv2D)              (None, 11, 11, 32)   9216        multiply_2[0][0]                 
 __________________________________________________________________________________________________
 batch_normalization_6 (BatchNor (None, 11, 11, 32)   128         conv4_dct[0][0]                  
+WARNING:tensorflow:`period` argument is deprecated. Please use `save_freq` to specify the frequency in number of batches seen.
+2023-01-12 04:38:47.267863: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2023-01-12 04:38:47.268583: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2399860000 Hz
+2023-01-12 04:38:49.944599: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.10
+2023-01-12 04:38:50.853852: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2023-01-12 04:38:51.363718: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.7
+2023-01-12 04:38:53.389925: W tensorflow/stream_executor/gpu/asm_compiler.cc:63] Running ptxas --version returned 256
+2023-01-12 04:38:53.445062: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 256, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2023-01-12 04:38:57.239422: W tensorflow/core/common_runtime/bfc_allocator.cc:248] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.56GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
